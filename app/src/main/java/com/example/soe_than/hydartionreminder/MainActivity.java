@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.soe_than.hydartionreminder.Utils.NotifiacationUtils;
 import com.example.soe_than.hydartionreminder.sync.ReminderTask;
 import com.example.soe_than.hydartionreminder.sync.WaterReminderIntentService;
 
@@ -79,5 +80,10 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             updateChargingReminderCount();
         }
 
+    }
+
+    public void testNotification(View view)
+    {
+        NotifiacationUtils.remindUserBecauseCharging(this);
     }
 }
