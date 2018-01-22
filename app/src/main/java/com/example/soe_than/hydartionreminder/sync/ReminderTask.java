@@ -13,6 +13,7 @@ public class ReminderTask {
 
     public static final String increment_water_count = "water_count";
     public static final String ACTION_DISMISS_NOTIFICATION = "dismiss_notification";
+    public static final String ACTION_CHARGING_REMINDER = "charging_reminder";
 
 
     public static void executeTask(Context context, String action) {
@@ -20,7 +21,14 @@ public class ReminderTask {
             incrementWaterCount(context);
         } else if (ACTION_DISMISS_NOTIFICATION.equals(action)) {
             NotifiacationUtils.clearNotification(context);
+        } else if (ACTION_CHARGING_REMINDER.equals(action)) {
+            issueChargingReminder(context);
         }
+    }
+
+    private static void issueChargingReminder(Context context) {
+        PreferenceUtilities.chargingReminderCount(context);
+        NotifiacationUtils.remindUserBecauseCharging(context);
     }
 
     private static void incrementWaterCount(Context context) {
